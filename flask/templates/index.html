@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<body>
+    <form action="/home" method="post">
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <td><input type="text" id="todo-id" name="todo-name"></td>
+                <td><input type="date" id="todo-date" name="todo-date"></td>
+                <td>
+                    <select name="todo-status" id="todo-status">
+                        <option value="progress" name="progress">Progress</option>
+                        <option value="active" name="active">Active</option>
+                        <option value="complite" name="complite">Complite</option>
+                    </select>
+                </td>
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
