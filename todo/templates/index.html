@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo CRUD</title>
+</head>
+
+<body>
+
+<h1>Todo List</h1>
+
+<!-- CREATE -->
+<form action="/add" method="POST">
+    <input type="text" name="task"
+           placeholder="Enter task" required>
+
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<!-- READ -->
+{% for t in tasks %}
+
+<p>
+    {{ t["id"] }}. {{ t["task"] }}
+
+    <!-- UPDATE -->
+    <form action="/update/{{ t['id'] }}"
+          method="POST"
+          style="display:inline;">
+
+        <input type="text"
+               name="task"
+               value="{{ t['task'] }}"
+               required>
+
+        <button type="submit">Update</button>
+
+    </form>
+
+    <!-- DELETE -->
+    <a href="/delete/{{ t['id'] }}">
+        <button type="button">Delete</button>
+    </a>
+</p>
+
+{% endfor %}
+
+</body>
+</html>
