@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: {{ '#0f172a' if theme == 'dark' else '#f1f5f9' }};
+            color: {{ '#e2e8f0' if theme == 'dark' else '#1e293b' }};
+            margin: 0;
+            padding: 24px;
+        }
+        .card {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 24px;
+            border-radius: 12px;
+            background: {{ '#1e293b' if theme == 'dark' else 'white' }};
+        }
+        input, textarea, select, button {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font: inherit;
+        }
+        button, .back {
+            background: #4f46e5;
+            color: white;
+            border: 0;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Edit Task</h1>
+
+        <form action="/update/{{ task.id }}" method="post">
+            <label for="title">Task title</label>
+            <input
+                id="title"
+                type="text"
+                name="title"
+                value="{{ task.title }}"
+                maxlength="150"
+                required
+            >
+
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                maxlength="300"
+                rows="4"
+            >{{ task.description or '' }}</textarea>
+
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority">
+                <option value="High"
+                    {% if task.priority == 'High' %}selected{% endif %}>
+                    High
+                </option>
+                <option value="Medium"
+                    {% if task.priority == 'Medium' %}selected{% endif %}>
+                    Medium
+                </option>
+                <option value="Low"
+                    {% if task.priority == 'Low' %}selected{% endif %}>
+                    Low
+                </option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <a class="back" href="/">Back to Tasks</a>
+    </div>
+</body>
+</html>
