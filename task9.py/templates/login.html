@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Personal Task Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 32px;
+            width: min(340px, calc(100% - 64px));
+            border-radius: 14px;
+            box-shadow: 0 8px 30px #0001;
+        }
+        input, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 7px;
+        }
+        input { border: 1px solid #cbd5e1; }
+        button {
+            border: 0;
+            color: white;
+            background: #4f46e5;
+            cursor: pointer;
+        }
+        .error { color: #b91c1c; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>My Task Tracker</h1>
+        <p>Enter your name to manage your daily tasks.</p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form action="/login" method="post">
+            <label for="username">Your name</label>
+            <input
+                id="username"
+                type="text"
+                name="username"
+                maxlength="100"
+                required
+                autofocus
+                placeholder="Enter your name"
+            >
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+</html>
